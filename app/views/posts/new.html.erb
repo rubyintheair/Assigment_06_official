@@ -1,0 +1,11 @@
+<%= form_for @current_user.posts.build do |f| %>
+  <div class="post">
+    <div class="textarea">
+      <%= f.hidden :poster_id, class: "form-group"%>
+      <%= f.text :body, class: "form-group" %>
+    </div>
+    <div class="control">
+      <%= f.submit "Send", class: "button is-primary" %>
+    </div>
+  </div>
+<% end %>

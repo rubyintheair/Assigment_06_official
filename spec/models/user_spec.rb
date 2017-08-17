@@ -14,5 +14,10 @@ RSpec.describe User, type: :model do
     it "has a valid image_url_or_default" do
       expect(@user.image_url_or_default).to eq "http://lorempixel.com/128/128/sports/Fake-User/"
     end
+
+    it "current_user can call posts method" do 
+      b = Post.create poster_id: @user.id, body: "hello, word"
+      expect(@user.posts.count).to eq 1
+    end 
   end
 end

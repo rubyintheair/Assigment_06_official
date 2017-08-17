@@ -1,0 +1,32 @@
+<div class="post card">
+    <div class="card-content">
+      <div class="media">
+        <div class="media-left">
+          <p class="image is-32x32">
+            <img src="https://i.pinimg.com/236x/a9/84/f7/a984f773c976d1011f55ed4be53c8f2a--cat-drawing-fat-cats.jpg" alt="Twitter square">
+          </p>
+        </div>
+        <div class="media-content">
+          <p class="is-title">
+            <strong><%= link_to post.poster.email, "/" %></strong>
+          </p>
+          <small><%= time_ago_in_words post.updated_at %> ago</small>
+        </div>
+      </div>
+      <div class="content">
+        <%= simple_format post.body %>
+      </div>
+    </div>
+    <div class="card-footer">
+      <div class="level">
+        <div class="level-left">
+          <div class="level-item">
+            <%= link_to fa_icon("thumbs-up", text: "Like"), toggle_like_path(post_id: post.id), class: "button is-white #{"is-liked" if current_user.liking?(post)}", method: "post" %>
+          </div>
+          <div class="level-item">
+            <%= link_to fa_icon("comments", text: "Comment"), "/changeme", class: "button is-white" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

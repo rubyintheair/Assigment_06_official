@@ -1,0 +1,16 @@
+
+<%= form_for current_user.posts.build do |f| %>
+<div class="card">
+  <div class="card-content">
+    <div class="post">
+      <div class="textarea">
+        <%= f.text_area :body, class: "textarea" %>
+      </div>
+      <div class="control">
+        <%= f.submit "Send", class: "button is-primary" %>
+      </div>
+    </div>
+  </div>
+</div>  
+<% end %>
+<%= render @posts %>

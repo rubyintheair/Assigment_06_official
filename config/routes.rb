@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :posts
   get 'friends/my'
   get 'friends/friended_by'
 
@@ -22,6 +23,8 @@ Rails.application.routes.draw do
   post 'login' => 'sessions#create'
   get 'logout' => 'sessions#destroy'
   resources :users
+
+  post "toggle_like" => "likes#toggle"
 
   root 'home#index'
 
