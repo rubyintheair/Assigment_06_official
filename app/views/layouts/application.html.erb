@@ -11,9 +11,15 @@
     <nav class="navbar">
       <div class="container">
         <div class="navbar-brand">
-          <a class="navbar-item" href="/">
-            <%= image_tag "human-hydrogen.png", alt: "Humanbook" %>
-          </a>
+          <% if current_user %>
+            <a class="navbar-item" href="<%= users_path %>">
+              <%= image_tag "human-hydrogen.png", alt: "Humanbook" %>
+            </a>
+          <% else %>
+            <a class="navbar-item" href="/">
+              <%= image_tag "human-hydrogen.png", alt: "Humanbook" %>
+            </a>
+          <% end %>
           <div class="navbar-item">
             <%= form_tag users_path, method: 'get' do %>
               <div class="field">

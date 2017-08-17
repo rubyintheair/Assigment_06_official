@@ -37,6 +37,12 @@
               <%= image_tag current_user.image_url_or_default %>
             </div>
           </div>
+
+          <div class="field">
+            <%= f.label :avatar, class: "label" %>
+            <div class="control"><%= f.file_field :avatar, class: "input" %></div>
+          </div>
+          
           <%= f.submit "Update Profile", class: "button is-primary" %>
         <% end %>
       </div>
