@@ -1,15 +1,9 @@
-<h1>Post#notify_new_post</h1>
+<h1>Hello Quy, this is your first email</h1>
 
 <p>
-  <%= @greeting %>, find me in app/views/post_mailer/notify_new_post.html.erb
+  <%= @post.poster.name %> just posted on your wall
 </p>
 
-<div>
-  this is name
-  <%= post.poster.name %>
-</div>
-
-<div> 
-  this is body 
-  <%= post.body %>
+<div style="border: 1px solid red">
+  <%= @post.body %>
 </div>
