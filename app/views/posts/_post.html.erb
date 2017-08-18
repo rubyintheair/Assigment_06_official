@@ -21,7 +21,7 @@
       <div class="level">
         <div class="level-left">
           <div class="level-item">
-            <%= link_to fa_icon("thumbs-up", text: "Like"), toggle_like_path(post_id: post.id), class: "button is-white #{"is-liked" if current_user.liking?(post)}", method: "post" %>
+            <%= link_to fa_icon("thumbs-up", text: "Like"), toggle_like_path(post_id: post.id), class: "<button> </button> is-white #{"is-liked" if current_user.liking?(post)}", method: "post" %>
           </div>
           <div class="level-item">
             <%= link_to fa_icon("comments", text: "Comment"), "/changeme", class: "button is-white" %>

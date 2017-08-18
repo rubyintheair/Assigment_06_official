@@ -54,3 +54,4 @@ gem "jquery-rails"
 gem 'omniauth'
 gem 'omniauth-facebook', '~> 4.0.0'
 gem 'trestle'
+gem "devise"
