@@ -7,6 +7,7 @@ class User < ApplicationRecord
   mount_uploader :avatar, AvatarUploader
   has_many :posts, foreign_key: "poster_id"
   has_many :likes, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   # me ==> friendships
   # friendship ==> friend

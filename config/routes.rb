@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'comments/new'
+
   resources :posts
   get 'friends/my'
   get 'friends/friended_by'
@@ -25,6 +27,7 @@ Rails.application.routes.draw do
   resources :users
 
   post "toggle_like" => "likes#toggle"
+  resources :comments
 
   root 'home#index'
 

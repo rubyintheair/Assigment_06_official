@@ -11,7 +11,6 @@ class PostsController < ApplicationController
     @post.poster = current_user
     if @post.save
       flash[:success] = "Success in creating post"
-      PostMailer.notify_new_post(@post).deliver
     else
       flash[:error] = "#{@post.errors.full_messages.to_sentence}"
     end 

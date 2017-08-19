@@ -1,9 +1,9 @@
-<div class="post card">
+<div class="post card" id="<%= dom_id post %>">
     <div class="card-content">
       <div class="media">
         <div class="media-left">
-          <p class="image is-32x32">
-            <img src="https://i.pinimg.com/236x/a9/84/f7/a984f773c976d1011f55ed4be53c8f2a--cat-drawing-fat-cats.jpg" alt="Twitter square">
+          <p class="image is-64x64">
+            <%= image_tag(post.poster.image_url_or_default) %>
           </p>
         </div>
         <div class="media-content">
@@ -21,12 +21,32 @@
       <div class="level">
         <div class="level-left">
           <div class="level-item">
-            <%= link_to fa_icon("thumbs-up", text: "Like"), toggle_like_path(post_id: post.id), class: "<button> </button> is-white #{"is-liked" if current_user.liking?(post)}", method: "post" %>
+            <%= link_to fa_icon("thumbs-up", text: "Like"), toggle_like_path(post_id: post.id), class: " js-like-button button is-white #{"is-liked" if current_user.liking?(post)}", 
+            method: "post",
+            remote: true 
+             %>
           </div>
           <div class="level-item">
-            <%= link_to fa_icon("comments", text: "Comment"), "/changeme", class: "button is-white" %>
+            <%= link_to fa_icon("comments", text: "Comment"), new_comment_path, class: "button is-white" %>
           </div>
         </div>
       </div>
     </div>
+    <div class="footer">
+      <%= form_for Comment.new do |f| %>
+        <%= f.text_area :body, class: "input" %> 
+        <%= f.hidden_field :post_id, value: post.id %>
+        <%= f.submit "Send" %>
+      <% end %>
+
+      <% post.comments.each do |comment| %>
+        <%= render partial: "comment", locals: {comment: comment} %>
+      <% end %>
+    </div>
   </div>
+           
+
+
+
+  
+  
