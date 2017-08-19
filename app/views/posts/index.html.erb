@@ -2,6 +2,18 @@
 <div class="card">
   <div class="card-content">
     <div class="post">
+    <div class="media">
+        <div class="media-left">
+          <p class="image is-64x64">
+            <%= image_tag(current_user.image_url_or_default) %>
+          </p>
+        </div>
+        <div class="media-content">
+          <p class="is-title">
+            <strong><%= link_to current_user.email, "/" %></strong>
+          </p>
+        </div>
+      </div>
       <div class="textarea">
         <%= f.text_area :body, class: "textarea" %>
       </div>

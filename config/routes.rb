@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :posts
   get 'friends/my'
   get 'friends/friended_by'
+  get "profile_01" => "users#edit"
 
   resources "messages" do
     collection do
@@ -13,7 +14,7 @@ Rails.application.routes.draw do
   end
 
   get "friends" => "friends#index"
-  get "profile" => "users#edit"
+
   # NOTE: /auth/facebook is supported by the omniauth-facebook gem
 
   get 'auth/:provider/callback' => 'sessions#callback'
@@ -24,7 +25,11 @@ Rails.application.routes.draw do
   get 'login' => 'sessions#new'
   post 'login' => 'sessions#create'
   get 'logout' => 'sessions#destroy'
-  resources :users
+  resources :users do 
+    member do 
+      get 'profile'
+    end
+  end
 
   post "toggle_like" => "likes#toggle"
   resources :comments

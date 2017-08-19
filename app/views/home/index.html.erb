@@ -3,8 +3,11 @@
 
   <% if current_user %>
     <p>More features are coming. Stay tuned!</p>
+    <%= render @posts %>
   <% else %>
     <%= link_to "Create An Account", new_user_path, class: "button is-primary" %>
     <%= link_to icon("facebook", "Log in with Facebook"), "/auth/facebook", class: "button is-info" %>
   <% end %>
 </div>
+
+

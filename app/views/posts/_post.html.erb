@@ -1,4 +1,5 @@
 <div class="post card" id="<%= dom_id post %>">
+  <% if post.poster.is_friend?(User.find(post.wall_user_id)) %>
     <div class="card-content">
       <div class="media">
         <div class="media-left">
@@ -7,9 +8,17 @@
           </p>
         </div>
         <div class="media-content">
+          <% if post.poster.id != post.wall_user_id %>
           <p class="is-title">
-            <strong><%= link_to post.poster.email, "/" %></strong>
+            <strong><%= link_to post.poster.name, profile_user_path(post.poster.id) %> posted on 
+            <%= link_to User.find(post.wall_user_id).name, profile_user_path(post.wall_user_id) %>
+            </strong>
           </p>
+          <% else %>
+          <p class="is-title">
+            <strong><%= link_to post.poster.name, profile_user_path(post.poster.id) %></strong>
+          </p>
+          <% end %>
           <small><%= time_ago_in_words post.updated_at %> ago</small>
         </div>
       </div>
@@ -21,10 +30,12 @@
       <div class="level">
         <div class="level-left">
           <div class="level-item">
+          <% if current_user %>
             <%= link_to fa_icon("thumbs-up", text: "Like"), toggle_like_path(post_id: post.id), class: " js-like-button button is-white #{"is-liked" if current_user.liking?(post)}", 
             method: "post",
             remote: true 
              %>
+          <% end %>
           </div>
           <div class="level-item">
             <%= link_to fa_icon("comments", text: "Comment"), new_comment_path, class: "button is-white" %>
@@ -40,10 +51,11 @@
       <% end %>
 
       <% post.comments.each do |comment| %>
-        <%= render partial: "comment", locals: {comment: comment} %>
+        <%= render partial: "comments/comment", locals: {comment: comment} %>
       <% end %>
     </div>
-  </div>
+  <% end %>
+</div>
            
 
 

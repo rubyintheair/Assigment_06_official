@@ -14,11 +14,11 @@ class PostsController < ApplicationController
     else
       flash[:error] = "#{@post.errors.full_messages.to_sentence}"
     end 
-    redirect_to posts_path  
+    redirect_back fallback_location: root_path
   end 
 
   def post_params
-    params.require(:post).permit(:body)
+    params.require(:post).permit(:body, :wall_user_id)
   end 
 
 end

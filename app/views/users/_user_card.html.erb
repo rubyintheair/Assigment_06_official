@@ -9,7 +9,7 @@
               <span class="icon">
                 <%= fa_icon(user.gender) %>
               </span>
-              <%= user.name %>
+              <%= link_to user.name, profile_user_path(user.id) %>
             </span>
           </div>
           <div class="field is-grouped">

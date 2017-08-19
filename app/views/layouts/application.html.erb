@@ -12,7 +12,7 @@
       <div class="container">
         <div class="navbar-brand">
           <% if current_user %>
-            <a class="navbar-item" href="<%= users_path %>">
+            <a class="navbar-item" href="/">
               <%= image_tag "human-hydrogen.png", alt: "Humanbook" %>
             </a>
           <% else %>
@@ -44,7 +44,7 @@
           </div>
           <div class="navbar-end">
             <% if current_user %>
-              <%= link_to posts_path, class: "navbar-item" do %>
+              <%= link_to profile_user_path(current_user.id), class: "navbar-item" do %>
                 <%= image_tag current_user.image_url_or_default %>
                 &nbsp;<%= current_user.name %>
               <% end %>
@@ -60,7 +60,7 @@
               </div>
 
               <%= link_to icon("comments-o", "Messages"), messages_path, class: "navbar-item" %>
-              <%= link_to icon("cog", "Setting"), profile_path, class: "navbar-item" %>
+              <%= link_to icon("cog", "Setting"), profile_01_path, class: "navbar-item" %>
               <%= link_to icon("sign-out", "Log out"), logout_path, class: "navbar-item" %>
             <% else %>
               <%= link_to "Sign Up", new_user_path, class: "navbar-item" %>

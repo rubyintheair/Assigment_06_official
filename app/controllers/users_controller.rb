@@ -28,6 +28,12 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
+  def profile
+    @user = User.find(params[:id])
+    @posts = @user.posts + Post.all.where(wall_user_id: @user.id)
+    @posts.sort! { |b,a|  a.created_at <=> b.created_at }
+  end
+
   private
 
   def user_params
