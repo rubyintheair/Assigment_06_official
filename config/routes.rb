@@ -34,6 +34,7 @@ Rails.application.routes.draw do
   post "toggle_like" => "likes#toggle"
   resources :comments
 
+  get "test" => "posts#test"
   root 'home#index'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

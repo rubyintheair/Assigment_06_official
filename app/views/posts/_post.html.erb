@@ -1,5 +1,5 @@
 <div class="post card" id="<%= dom_id post %>">
-  <% if post.poster.is_friend?(User.find(post.wall_user_id)) %>
+  <% if current_user.is_friend?(post.poster) || post.poster == current_user %>
     <div class="card-content">
       <div class="media">
         <div class="media-left">
@@ -22,6 +22,11 @@
           <small><%= time_ago_in_words post.updated_at %> ago</small>
         </div>
       </div>
+      <% if post.photo %>
+        <div class="image">
+          <%= post.photo.url %>
+        </div>
+      <% end %>
       <div class="content">
         <%= simple_format post.body %>
       </div>
@@ -38,16 +43,23 @@
           <% end %>
           </div>
           <div class="level-item">
-            <%= link_to fa_icon("comments", text: "Comment"), new_comment_path, class: "button is-white" %>
+            <%= link_to fa_icon("comments", text: "Comment"), new_comment_path, class: "button is-white comment" %>
+          </div>
+          <div class="level-item">
+            <%= link_to fa_icon("upload", text: "Photo"), profile_user_path(post.poster.id), class: "button is-white upload" %>
           </div>
         </div>
       </div>
     </div>
     <div class="footer">
       <%= form_for Comment.new do |f| %>
-        <%= f.text_area :body, class: "input" %> 
+        <%= f.text_area :body, class: "input comment-form" %> 
         <%= f.hidden_field :post_id, value: post.id %>
-        <%= f.submit "Send" %>
+        <div class="field">
+          <%= f.label :photo, class: "label" %>
+          <div class="control"><%= f.file_field :photo, class: "input" %></div>
+        </div>
+        <%= f.submit "Send", class: "comment-form" %>
       <% end %>
 
       <% post.comments.each do |comment| %>
@@ -56,7 +68,7 @@
     </div>
   <% end %>
 </div>
-           
+     
 
 
 

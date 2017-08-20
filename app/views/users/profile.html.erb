@@ -53,6 +53,10 @@
           <div class="textarea">
             <%= f.text_area :body, class: "textarea" %>
           </div>
+          <div class="field">
+            <%= f.label :photo, class: "label" %>
+            <div class="control"><%= f.file_field :photo, class: "input" %></div>
+          </div>
           <div class="control">
             <%= f.submit "Send", class: "button is-primary" %>
           </div>

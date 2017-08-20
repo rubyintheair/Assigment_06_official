@@ -7,6 +7,11 @@
     </div>
 
     <div class="media-content">
+      <% if comment.photo %>
+        <div class="content image">
+          <%= comment.photo.url %>
+        </div>
+      <% end %>
       <div class="content">
         <p>
           <strong><%= link_to comment.user.name, "/" %></strong>

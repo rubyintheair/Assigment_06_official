@@ -3,4 +3,9 @@ class Post < ApplicationRecord
   has_many :likes, as: :item
   validates :body, presence: true
   has_many :comments, dependent: :destroy
+  mount_uploader :photo, AvatarUploader
+
+  def photo_url
+    photo.url 
+  end
 end
