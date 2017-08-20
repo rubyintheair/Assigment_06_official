@@ -8,4 +8,8 @@ class Post < ApplicationRecord
   def photo_url
     photo.url 
   end
+
+  def user_name
+    user.name_or_mail
+  end 
 end

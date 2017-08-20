@@ -41,6 +41,7 @@
             remote: true 
              %>
           <% end %>
+          <%= post.likes.map {|like| like.user.name }.to_sentence %>
           </div>
           <div class="level-item">
             <%= link_to fa_icon("comments", text: "Comment"), new_comment_path, class: "button is-white comment" %>
@@ -51,6 +52,7 @@
         </div>
       </div>
     </div>
+
     <div class="footer">
       <%= form_for Comment.new do |f| %>
         <%= f.text_area :body, class: "input comment-form" %> 
