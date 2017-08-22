@@ -61,6 +61,11 @@ class User < ApplicationRecord
     end
   end
 
+  def self.random_user
+    random_index = rand(User.count)
+    User.offset(random_index).first
+  end
+
   # EXPLANATION[]
   # def friends
   #   # go look at each of my friendship and get friend_id
@@ -111,5 +116,9 @@ class User < ApplicationRecord
 
   def liking?(item)
     likes.where(item: item).exists?
+  end 
+
+  def posts_on_wall
+    Post.where(wall_user: self).or(Post.where(poster: self))
   end 
 end

@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
   get 'comments/new'
 
-  resources :posts
+  resources :posts do 
+    get :paging, on: :collection
+  end 
+  
   get 'friends/my'
   get 'friends/friended_by'
   get "profile_01" => "users#edit"
@@ -21,7 +24,7 @@ Rails.application.routes.draw do
 
   delete "remove_friend" => "friendships#destroy"
   resources :friendships
-
+  delete '/posts' => 'posts#destroy'
   get 'login' => 'sessions#new'
   post 'login' => 'sessions#create'
   get 'logout' => 'sessions#destroy'

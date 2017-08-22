@@ -6,8 +6,7 @@ class PostMailer < ApplicationMailer
   #   en.post_mailer.notify_new_post.subject
   #
   def notify_new_post(post)
-    @greeting = "Hi"
-
-    mail to: "to@example.org"
+    @post = post
+    mail to: post.wall_user_id, subject: "..."
   end
 end

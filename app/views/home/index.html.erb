@@ -4,6 +4,11 @@
   <% if current_user %>
     <p>More features are coming. Stay tuned!</p>
     <%= render @posts %>
+    <div class="pagination" data-pagination-endpoint="<%= paging_posts_path %>" 
+          data-pagination-pages="<%= @posts.total_pages %>">
+          <i class="fa fa-spinner fa-pulse fa-3x fa-fw" style="margin: auto"></i>
+          Loading...
+    </div>
   <% else %>
     <%= link_to "Create An Account", new_user_path, class: "button is-primary" %>
     <%= link_to icon("facebook", "Log in with Facebook"), "/auth/facebook", class: "button is-info" %>

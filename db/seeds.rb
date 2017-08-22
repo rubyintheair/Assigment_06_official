@@ -8,3 +8,4 @@
 
 User.generate_users(5, "male")
 User.generate_users(5, "female")
+Post.generate_posts(20)

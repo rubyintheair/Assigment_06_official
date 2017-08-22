@@ -7,9 +7,9 @@
     </div>
 
     <div class="media-content">
-      <% if comment.photo %>
+      <% if comment.photo? %>
         <div class="content image">
-          <%= comment.photo.url %>
+          <%= image_tag comment.photo.url %>
         </div>
       <% end %>
       <div class="content">
@@ -22,7 +22,7 @@
       </div>
     </div>
     <div class="level-item">
-      <%= link_to fa_icon("thumbs-up", text: "Like"), toggle_like_path(comment_id: comment.id), class: " js-like-button button is-white #{"is-liked" if current_user.liking?(comment)}", 
+      <%= link_to fa_icon("thumbs-up", text: "Like"), toggle_like_path(comment_id: comment.id), class: "js-like-button button is-white #{"is-liked" if current_user.liking?(comment)}", 
       method: "post",
       remote: true 
       %>
