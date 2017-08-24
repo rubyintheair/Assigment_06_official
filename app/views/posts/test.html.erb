@@ -58,3 +58,6 @@
           <%= image_tag(post.photo_url) %>
         </div>
       <% end %>
+
+
+$("#<%= dom_id @item %>").find(".js-like-button").toggleClass("is-liked");  

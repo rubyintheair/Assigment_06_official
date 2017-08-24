@@ -1,0 +1,14 @@
+<% if current_user %>
+  <%= link_to fa_icon("thumbs-up", text: "Like"), toggle_like_path(post_id: post.id), 
+    class: " js-like-button button is-white #{"is-liked" if current_user.liking?(post)}", 
+    method: "post",
+    remote: true 
+  %>
+  <% if post.likes.present? %>
+    <div>
+      <%= fa_stacked_icon "thumbs-up inverse", base: "circle" %>
+      <%= post.likes.map(&:user_name).to_sentence %>
+    </div>
+  <% end %>
+<% end %>
+

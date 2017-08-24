@@ -12,7 +12,7 @@ class Post < ApplicationRecord
   end
 
   def user_name
-    user.name_or_mail
+    user.name_or_email
   end 
 
   def self.generate_posts(n, user = nil, generate_mentions = true)

@@ -39,13 +39,8 @@
     <div class="card-footer">
       <div class="level">
         <div class="level-left">
-          <div class="level-item">
-          <% if current_user %>
-            <%= link_to fa_icon("thumbs-up", text: "Like"), toggle_like_path(post_id: post.id), class: " js-like-button button is-white #{"is-liked" if current_user.liking?(post)}", 
-            method: "post",
-            remote: true 
-             %>
-          <% end %>
+          <div class="level-item likes-sentence">
+            <%= render "posts/likes_sentence", post: post %> 
           </div>
           <div class="level-item">
             <%= link_to fa_icon("comments", text: "Comment"), "", class: "button is-white comment-button" %>
@@ -55,9 +50,6 @@
           </div>
         </div>
       </div>
-    </div>
-    <div class="card-footer">
-      <%= post.likes.map {|like| like.user.name }.to_sentence %>
     </div>
 
     <div class="footer">
