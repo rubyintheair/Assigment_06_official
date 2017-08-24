@@ -31,4 +31,7 @@
       <%= link_to fa_icon("comments", text: "Comment"), new_comment_path, class: "button is-white" %>
     </div>
   </div>
+  
+    <%= render "posts/likes_sentence", item: comment %>
+  
 </div>

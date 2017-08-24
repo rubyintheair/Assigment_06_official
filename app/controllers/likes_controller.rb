@@ -11,7 +11,7 @@ class LikesController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to fallback_location: posts_path }
-      format.js
+      format.js {render "toggle.js" }
     end 
     
   end 

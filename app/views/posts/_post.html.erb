@@ -39,9 +39,13 @@
     <div class="card-footer">
       <div class="level">
         <div class="level-left">
-          <div class="level-item likes-sentence">
-            <%= render "posts/likes_sentence", post: post %> 
-          </div>
+          <% if current_user %>
+            <%= link_to fa_icon("thumbs-up", text: "Like"), toggle_like_path(post_id: post.id), 
+              class: " js-like-button button is-white #{"is-liked" if current_user.liking?(post)}", 
+              method: "post",
+              remote: true 
+            %>
+          <% end %>
           <div class="level-item">
             <%= link_to fa_icon("comments", text: "Comment"), "", class: "button is-white comment-button" %>
           </div>
@@ -51,6 +55,9 @@
         </div>
       </div>
     </div>
+    <%= render "posts/likes_sentence", item: post %>
+
+    
 
     <div class="footer">
       <%= form_for current_user.comments.build do |f| %>
