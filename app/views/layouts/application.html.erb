@@ -11,27 +11,29 @@
     <nav class="navbar">
       <div class="container">
         <div class="navbar-brand">
-          <% if current_user %>
-            <a class="navbar-item" href="/">
-              <%= image_tag "human-hydrogen.png", alt: "Humanbook" %>
-            </a>
-          <% else %>
-            <a class="navbar-item" href="/">
-              <%= image_tag "human-hydrogen.png", alt: "Humanbook" %>
-            </a>
-          <% end %>
-          <div class="navbar-item">
-            <%= form_tag users_path, method: 'get' do %>
-              <div class="field">
-                <div class="control has-icons-right">
-                  <input class="input" type="text" placeholder="Search users">
-                  <span class="icon is-right is-small">
-                    <%= fa_icon("search") %>
-                  </span>
-                </div>
+        <% if current_user %>
+          <a class="navbar-item" href="<%= posts_path %>">
+            <%= image_tag "human-hydrogen.png", alt: "Humanbook" %>
+          </a>
+        <% else %>
+          <a class="navbar-item" href="/">
+            <%= image_tag "human-hydrogen.png", alt: "Humanbook" %>
+          </a>
+        <% end %>
+        </div>
+
+        <div class="navbar-item">
+          <%= form_tag search_users_path, method: 'get' do  %>
+            <div class="field">
+              <div class="control has-icons-right">
+                <%= text_field_tag(:q, params[:search], class: "input", autocomplete: "false", id: "provider-remote") %>
+                <span class="icon is-right is-small">
+                  <%= fa_icon("search") %>
+                </span>
               </div>
-            <% end %>
-          </div>
+            </div>
+          <% end %>
+        </div>
 
           <div class="navbar-burger burger" data-target="navMenu">
             <span></span>

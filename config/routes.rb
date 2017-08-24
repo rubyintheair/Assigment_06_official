@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :posts do 
     get :paging, on: :collection
   end 
-  
+
   get 'friends/my'
   get 'friends/friended_by'
   get "profile_01" => "users#edit"
@@ -28,10 +28,14 @@ Rails.application.routes.draw do
   get 'login' => 'sessions#new'
   post 'login' => 'sessions#create'
   get 'logout' => 'sessions#destroy'
+
   resources :users do 
     member do 
       get 'profile'
     end
+    collection do 
+      get :search
+    end 
   end
 
   post "toggle_like" => "likes#toggle"

@@ -8,7 +8,7 @@
           </p>
         </div>
         <div class="media-content">
-          <% if post.poster.id != post.wall_user_id %>
+          <% unless post.on_self_wall? %>
           <p class="is-title">
             <strong><%= link_to post.poster.name, profile_user_path(post.poster.id) %> posted on 
             <%= link_to User.find(post.wall_user_id).name, profile_user_path(post.wall_user_id) %>
@@ -19,6 +19,7 @@
             <strong><%= link_to post.poster.name, profile_user_path(post.poster.id) %></strong>
           </p>
           <% end %>
+            <%= mentions_text(post) %>
           <small><%= time_ago_in_words post.updated_at %> ago</small>
         </div>
       </div>
@@ -47,7 +48,7 @@
           <% end %>
           </div>
           <div class="level-item">
-            <%= link_to fa_icon("comments", text: "Comment"), new_comment_path, class: "button is-white comment" %>
+            <%= link_to fa_icon("comments", text: "Comment"), "", class: "button is-white comment-button" %>
           </div>
           <div class="level-item">
             <%= link_to fa_icon("upload", text: "Photo"), profile_user_path(post.poster.id), class: "button is-white upload" %>
@@ -61,13 +62,13 @@
 
     <div class="footer">
       <%= form_for current_user.comments.build do |f| %>
-        <%= f.text_area :body, class: "input comment-form" %> 
+        <%= f.text_area :body, class: "input comment-form hidden" %> 
         <%= f.hidden_field :post_id, value: post.id %>
         <div class="field">
           <%= f.label :photo, class: "label" %>
-          <div class="control"><%= f.file_field :photo, class: "input" %></div>
+          <div class="control"><%= f.file_field :photo, class: "input hidden" %></div>
         </div>
-        <%= f.submit "Send", class: "comment-form" %>
+        <%= f.submit "Send", class: "comment-form hidden" %>
       <% end %>
 
       <%= render post.comments %>

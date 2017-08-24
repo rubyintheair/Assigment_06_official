@@ -25,7 +25,7 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.all
+    
   end
 
   def profile
@@ -35,9 +35,17 @@ class UsersController < ApplicationController
     @posts.uniq!
   end
 
+  def search
+  @users = User.autocomplete(params[:q])
+    respond_to do |format|
+      format.html {render }
+      format.json
+    end 
+  end 
+
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :password, :gender, :password_confirmation, :avatar)
+    params.require(:user).permit(:name, :email, :password, :gender, :password_confirmation, :avatar, :search)
   end
 end

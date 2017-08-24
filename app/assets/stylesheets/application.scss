@@ -4,3 +4,9 @@
 @import "home";
 @import "users";
 @import "posts";
+@import "css/easy-autocomplete";
+@import "css/easy-autocomplete.themes";
+
+div.easy-autocomplete-container > ul {
+  display: block !important;
+}

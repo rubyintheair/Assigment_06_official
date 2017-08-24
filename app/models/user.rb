@@ -121,4 +121,12 @@ class User < ApplicationRecord
   def posts_on_wall
     Post.where(wall_user: self).or(Post.where(poster: self))
   end 
+
+  def self.autocomplete(name)
+    User.where("name ILIKE ? or email ILIKE ?", "%#{name}%", "%#{name}%")
+  end 
+
+  # def self.autocomplete_mail(email)
+  #   User.where("email ILIKE ? ", "%#{email}%")
+  # end 
 end
