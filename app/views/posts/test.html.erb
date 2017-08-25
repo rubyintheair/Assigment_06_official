@@ -59,5 +59,22 @@
         </div>
       <% end %>
 
+    <div class="tile is-ancestor">
+  <div class="tile is-vertical is-8 is-parent">
+    <div class="columns tile is-child">
+      <%= render "profile_left_content" %>
+    </div>
+  </div>
+
+  <div class="tile is-vertical is-2 is-parent">
+    <div class="tile is-child">
+      <div class="tile box">
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
 
 $("#<%= dom_id @item %>").find(".js-like-button").toggleClass("is-liked");  

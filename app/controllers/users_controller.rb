@@ -38,8 +38,8 @@ class UsersController < ApplicationController
   def search
   @users = User.autocomplete(params[:q])
     respond_to do |format|
-      format.html {render }
-      format.json
+      format.html 
+      format.json 
     end 
   end 
 
