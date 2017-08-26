@@ -40,6 +40,7 @@ Rails.application.routes.draw do
 
   post "toggle_like" => "likes#toggle"
   resources :comments
+  delete "/comments" => "comments#destroy"
 
   get "test" => "posts#test"
   root 'home#index'

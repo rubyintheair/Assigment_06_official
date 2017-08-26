@@ -1,35 +1,45 @@
 <div class="box" id="<%= dom_id comment %>">
   <div class="media">
     <div class="media-left">
-      <div class="image is-64x64">
-        <%= image_tag(comment.user.image_url_or_default) %> 
+      <div class="image is-48x48">
+        <%= link_to image_tag(comment.user.image_url_or_default), profile_user_path(comment.user.id) %>
       </div>
     </div>
 
     <div class="media-content">
-      <% if comment.photo? %>
-        <div class="content image">
-          <%= image_tag comment.photo.url %>
-        </div>
-      <% end %>
       <div class="content">
         <p>
-          <strong><%= link_to comment.user.name, "/" %></strong>
           <small><%= time_ago_in_words comment.updated_at %> ago</small>
           <br>
           <%= comment.body %>
         </p>
       </div>
-    </div>
-    <div class="level-item">
-      <%= link_to fa_icon("thumbs-up", text: "Like"), toggle_like_path(comment_id: comment.id), 
-      class: "js-like-button button is-white #{"is-liked" if current_user.liking?(comment)}", 
-      method: "post",
-      remote: true 
-      %>
-    </div>
-    <div class="level-item">
-      <%= link_to fa_icon("comments", text: "Comment"), new_comment_path, class: "button is-white" %>
+      <% if comment.photo? %>
+        <div class="content image is-1by1">
+          <%= image_tag comment.photo.url %>
+        </div>
+      <% end %>
+
+      
+
+      <nav class="level is-mobile">
+        <div class="level-item">
+          <%= link_to fa_icon("thumbs-up", text: "Like"), toggle_like_path(comment_id: comment.id), 
+          class: "js-like-button button is-white #{"is-liked" if current_user.liking?(comment)}", 
+          method: "post",
+          remote: true 
+          %>
+        </div>
+        <div class="level-item">
+          <%= link_to fa_icon("comments", text: "Comment"), new_comment_path, class: "button is-white" %>
+        </div>
+        <div class="level-item">
+          <%= form_tag("/comments", method: :delete) do %>
+            <%= hidden_field_tag :monster_comment, comment.id %>
+            <%= submit_tag "Delete" %>
+          <% end %>
+        </div>
+      </nav>
     </div>
   </div>
   <% if current_user.liking?(comment) %>
