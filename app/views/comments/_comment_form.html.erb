@@ -7,14 +7,14 @@
     </div>
     <div class="media-content">
       <p class="is-title">
-        <strong><%= link_to current_user.email, "/" %></strong>
-        <%= f.text_area :body, class: "input comment-form" %> 
+        <strong><%= link_to current_user.email, profile_user_path(current_user.id) %></strong>
+        <%= f.text_area :body, class: "input js-new-comment comment-form", remote: true %> 
         <%= f.hidden_field :post_id, value: post.id %>
         <div class="field">
           <%= f.label :photo, class: "label" %>
-          <div class="control"><%= f.file_field :photo, class: "input" %></div>
+          <div class="control"><%= f.file_field :photo, class: "input js-new-comment", remote: true %></div>
         </div>
-        <%= f.submit "Send", class: "comment-form" %>
+        <%= f.submit "Send", class: "comment-form js-new-comment" %>
       </p>
     </div>
   </div>

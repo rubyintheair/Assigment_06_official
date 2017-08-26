@@ -60,7 +60,9 @@
     <div class="footer">
       <%= render "comments/comment_form", post: post %>
       <br>
-      <%= render post.comments %>
+      <div class="comments">
+        <%= render post.comments %>
+      </div>
     </div>
 
   

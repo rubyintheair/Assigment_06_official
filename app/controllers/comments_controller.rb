@@ -5,7 +5,6 @@ class CommentsController < ApplicationController
   def create 
     @comment = Comment.new(comment_params)
     @comment.user = current_user
-    puts "Its not save now"
     if @comment.save
       if @comment.photo 
         flash[:success] = "Success in creating comment and uploading photo"
@@ -15,7 +14,10 @@ class CommentsController < ApplicationController
     else
       flash[:error] = "#{@comment.errors.full_messages.to_sentence}"
     end 
-    redirect_back fallback_location: root_path
+    respond_to do |format|
+      format.html { redirect_back fallback_location: root_path }
+      format.js
+    end 
   end 
 
   def destroy
