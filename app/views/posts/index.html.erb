@@ -1,34 +1,20 @@
-<%= form_for current_user.posts.build do |f| %>
-<div class="card">
-  <div class="card-content">
-    <div class="post">
-    <div class="media">
-        <div class="media-left">
-          <p class="image is-64x64">
-            <%= image_tag(current_user.image_url_or_default) %>
-          </p>
-        </div>
-        <div class="media-content">
-          <p class="is-title">
-            <strong><%= link_to current_user.email, "/" %></strong>
-          </p>
-        </div>
-      </div>
-      <div>
-        <%= f.text_area :body, class: "textarea" %>
-      </div>
-      <div class="control">
-        <%= f.submit "Send", class: "button is-primary" %>
-      </div>
-    </div>
+<div class="columns">
+  <div class="column is-one-quarter">
+    <h1>First column</h1>
   </div>
-</div>  
-<% end %>
-<div class="js-posts">
-  <%= render @posts %>
-</div>
-<div class="pagination" data-pagination-endpoint="<%= paging_posts_path %>" 
+  <div class="column">
+    <%= render "form_post" %>
+    <div class="js-posts">
+      <%= render @posts %>
+    </div>
+    <div class="pagination" data-pagination-endpoint="<%= paging_posts_path %>" 
       data-pagination-pages="<%= @posts.total_pages %>">
       <i class="fa fa-spinner fa-pulse fa-3x fa-fw" style="margin: auto"></i>
       Loading...
+    </div>
+  </div>
+
+  <div class="column is-one-quarter">
+    <h1>Third column</h1>
+  </div>
 </div>

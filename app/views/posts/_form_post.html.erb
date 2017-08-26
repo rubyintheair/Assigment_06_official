@@ -1,0 +1,26 @@
+<%= form_for current_user.posts.build do |f| %>
+  <div class="card">
+    <div class="card-content">
+      <div class="post">
+      <div class="media">
+          <div class="media-left">
+            <p class="image is-64x64">
+              <%= image_tag(current_user.image_url_or_default) %>
+            </p>
+          </div>
+          <div class="media-content">
+            <p class="is-title">
+              <strong><%= link_to current_user.email, "/" %></strong>
+            </p>
+          </div>
+        </div>
+        <div>
+          <%= f.text_area :body, class: "textarea" %>
+        </div>
+        <div class="control">
+          <%= f.submit "Send", class: "button is-primary" %>
+        </div>
+      </div>
+    </div>
+  </div>  
+<% end %>
