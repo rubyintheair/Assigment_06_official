@@ -4,6 +4,8 @@ class CommentsController < ApplicationController
 
   def create 
     @comment = Comment.new(comment_params)
+    @comment.user = current_user
+    puts "Its not save now"
     if @comment.save
       if @comment.photo 
         flash[:success] = "Success in creating comment and uploading photo"

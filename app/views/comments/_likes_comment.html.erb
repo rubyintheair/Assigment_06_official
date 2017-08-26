@@ -1,0 +1,7 @@
+<div class="card-footer likes-sentence">  
+  <% if comment.likes.present? %>
+    <%= fa_stacked_icon "thumbs-up inverse", base: "circle" %>
+    <%= comment.likes.map(&:user_name).to_sentence %>
+  <% end %>
+</div>
+
