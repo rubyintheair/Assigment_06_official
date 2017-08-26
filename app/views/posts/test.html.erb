@@ -1,0 +1,5 @@
+<%= link_to fa_icon("thumbs-up", text: "Like"), toggle_like_path(comment_id: comment.id), 
+class: "js-comment-like button is-white #{"is-liked" if current_user.liking?(comment)}", 
+method: "post",
+remote: true 
+%>

@@ -1,4 +1,11 @@
-$post = $("#<%= dom_id @item %>")
-$post.find(".js-like-button").toggleClass("is-liked");
-$post.find(".likes-sentence").replaceWith("<%= j render 'posts/likes_sentence', item: @item %>");
+<% if @item.is_a?(Post) %>
+  $post = $("#<%= dom_id @item %>")
+  $post.find(".js-like-button").toggleClass("is-liked");
+  $post.find(".likes-sentence").replaceWith("<%= j render 'posts/likes_sentence', item: @item %>");
+<% elsif @item.is_a?(Comment) %>
+  $comment = $("#<%= dom_id @item %>");
+  $comment.find(".js-comment-like-status").html("<%= j render "comments/comment_like_status", comment: @item %>")
+  $comment.find(".likes-sentence").replaceWith("<%= j render 'posts/likes_sentence', item: @item %>");
+<% end %>
+
 
