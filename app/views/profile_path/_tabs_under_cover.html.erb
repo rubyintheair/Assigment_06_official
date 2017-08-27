@@ -1,11 +1,11 @@
 <ul>
-  <li >
+  <li>
     <div class="image is-128x128 is-left">
-      <img src="<%= current_user.image_url_or_default %>">
+      <img src="<%= @user.image_url_or_default %>">
     </div>
   </li>
-  <li class="is-active"><a>Pictures</a></li>
-  <li><a>Music</a></li>
-  <li><a>Videos</a></li>
-  <li><a>Documents</a></li>
+  <li><%= link_to "About", "/", class:"tab-cover" %></li>
+  <li><%= link_to "Friends", "/", class:"tab-cover" %></li>
+  <li><%= link_to "Photos", "/", class:"tab-cover" %></li>
+  <li><%= link_to "More", "/", class:"tab-cover" %></li>
 </ul>

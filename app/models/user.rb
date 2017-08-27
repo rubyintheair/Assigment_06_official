@@ -5,6 +5,7 @@ class User < ApplicationRecord
   has_many :sent_messages, class_name: "Message", foreign_key: "sender_id"
   has_many :received_messages, class_name: "Message", foreign_key: "recipient_id"
   mount_uploader :avatar, AvatarUploader
+  mount_uploader :cover, AvatarUploader
   has_many :posts, foreign_key: "poster_id"
   has_many :likes, dependent: :destroy
   has_many :comments, dependent: :destroy

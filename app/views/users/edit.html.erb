@@ -42,6 +42,11 @@
             <%= f.label :avatar, class: "label" %>
             <div class="control"><%= f.file_field :avatar, class: "input" %></div>
           </div>
+
+          <div class="field">
+            <%= f.label :cover, class: "label" %>
+            <div class="control"><%= f.file_field :cover, class: "input" %></div>
+          </div>
           
           <%= f.submit "Update Profile", class: "button is-primary" %>
         <% end %>

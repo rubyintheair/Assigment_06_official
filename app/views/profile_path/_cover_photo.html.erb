@@ -1,5 +1,17 @@
 <div class="card-image">
-  <div class="image is-2by1">
-      <img src="http://www.lifeguide.com.ua/wp-content/uploads/2014/09/lanterns30.jpg" alt="Image">
+  <div class="image is-2by1 cover">
+  <% if @user == current_user %>
+    <% if @user.cover? %>
+      <%= image_tag @user.cover.url %>
+    <% else %>
+      <h1>Update your cover photo, click -> Setting</h1>
+    <% end %>
+  <% else %>
+    <% if @user.cover? %>
+      <%= image_tag @user.cover.url %>
+    <% else %>
+      <h1>I still not have cover photo.</h1>
+    <% end %>
+  <% end %>
   </div>
 </div>

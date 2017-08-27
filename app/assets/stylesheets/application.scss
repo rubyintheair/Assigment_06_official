@@ -5,9 +5,17 @@
 @import "users";
 @import "posts";
 @import "likes";
+@import "profile_path";
 @import "css/easy-autocomplete";
 @import "css/easy-autocomplete.themes";
 
 div.easy-autocomplete-container > ul {
   display: block !important;
 }
+
+a {
+  color: $color7;
+}
+
+
+
