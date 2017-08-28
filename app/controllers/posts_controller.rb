@@ -58,6 +58,10 @@ class PostsController < ApplicationController
     render partial: "post", collection: @posts, layout: false
   end 
 
+  def practice 
+    
+  end 
+
   def post_params
     params.require(:post).permit(:body, :wall_user_id, :photo)
   end 

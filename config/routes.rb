@@ -35,6 +35,8 @@ Rails.application.routes.draw do
     end
     collection do 
       get :search
+      get :scroll
+      get :paging
     end 
   end
 
@@ -44,6 +46,8 @@ Rails.application.routes.draw do
 
   get "test" => "posts#test"
   root 'home#index'
+
+  get "practice" => "posts#practice"
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

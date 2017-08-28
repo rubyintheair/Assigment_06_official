@@ -1,6 +1,6 @@
 <div class="post card" id="<%= dom_id post %>">
   
-    <div class="card-content">
+    <div class="card-content" style="margin: 5px">
       <div class="media">
         <div class="media-left">
           <p class="image is-64x64">
@@ -36,7 +36,7 @@
         <% end %>
       </div>
     </div>
-    <div class="card-footer">
+    <div class="card-footer comment-icon", style="margin: 5px">
       <div class="level">
         <div class="level-left">
           <% if current_user %>
@@ -47,7 +47,7 @@
             %>
           <% end %>
           <div class="level-item">
-            <%= link_to fa_icon("comments", text: "Comment"), "", class: "button is-white comment-button" %>
+            <%= content_tag("a",fa_icon("comments", text: "Comment"), class: "button is-white comment-button")%>
           </div>
           <div class="level-item">
             <%= link_to fa_icon("upload", text: "Photo"), profile_user_path(post.poster.id), class: "button is-white upload" %>
@@ -57,7 +57,7 @@
     </div>
     <%= render "posts/likes_sentence", item: post %>
 
-    <div class="footer footer-post">
+    <div class="footer footer-post" style="padding: 15px">
       <%= render "comments/comment_form", post: post %>
       <br>
       <div class="comments">

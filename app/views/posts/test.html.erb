@@ -3,3 +3,37 @@ class: "js-comment-like button is-white #{"is-liked" if current_user.liking?(com
 method: "post",
 remote: true 
 %>
+
+ 
+<div class="tile is-ancestor">
+
+  <div class="tile is-vertical is-9 is-parent">
+    <div class="tile is-child">
+      <%= render "profile_path/cover_photo" %>
+      <div class="tabs style="margin-top: -50px;"">
+        <%= render "profile_path/tabs_under_cover" %>
+      </div>
+    </div>
+    
+    <div class="columns tile is-child">
+      <%= render "profile_path/profile_left_content" %>
+    </div>
+  </div>
+
+  <div class="tile is-vertical is-1 is-parent">
+    <div class="tile is-child">
+    </div>
+  </div>
+
+  <div class="tile is-vertical is-3 is-parent">
+    <div class="tile is-child">
+      <div class="tile column is-12">
+        <%= render "profile_path/column_left_1" %>
+      </div>
+    </div>
+  </div>
+</div>
+   
+
+
+

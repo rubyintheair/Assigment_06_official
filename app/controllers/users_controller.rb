@@ -28,11 +28,14 @@ class UsersController < ApplicationController
     
   end
 
+  def scroll
+    raise
+  end
+
   def profile
     @user = User.find(params[:id])
     @posts = @user.posts + Post.all.where(wall_user_id: @user.id)
-    @posts.sort! { |b,a|  a.created_at <=> b.created_at }
-    @posts.uniq!
+    @posts.sort! { |b,a|  a.created_at <=> b.created_at }.uniq
   end
 
   def search

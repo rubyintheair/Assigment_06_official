@@ -1,29 +1,24 @@
-
-<div class="tile is-ancestor">
-
-  <div class="tile is-vertical is-9 is-parent">
-    <div class="tile is-child">
-      <%= render "profile_path/cover_photo" %>
-      <div class="tabs">
+<div class="container">
+  <div class="columns"> 
+    <div class="column is-9" style="background-color: red">
+      <div class="cover-photo">
+        <%= render "profile_path/cover_photo" %>
+      </div>
+      <div class="tabs" style="padding: -50px">
         <%= render "profile_path/tabs_under_cover" %>
       </div>
-    </div>
-    
-    <div class="columns tile is-child">
-      <%= render "profile_path/profile_left_content" %>
-    </div>
-  </div>
-
-  <div class="tile is-vertical is-1 is-parent">
-    <div class="tile is-child">
-    </div>
-  </div>
-
-  <div class="tile is-vertical is-3 is-parent">
-    <div class="tile is-child">
-      <div class="tile column is-12">
-        <%= render "profile_path/column_left_1" %>
+      <div class="columns">
+        <div class="column is-12" style="background-color: orange">
+          <div class="columns">
+            <%= render "profile_path/profile_left_content" %>
+          </div>
+        </div>
       </div>
     </div>
+    <div class="column is-3" style="background-color: pink">
+      <%= render "profile_path/column_left_1" %>
+    </div>
+  </div>
   </div>
 </div>
+

@@ -1,20 +1,19 @@
 <%= form_for current_user.comments.build do |f| %>
-  <div class="media">
+  <div class="media hidden comment-form">
     <div class="media-left">
       <div class="image is-64x64">
-        <%= image_tag current_user.image_url_or_default %>
+        <%= link_to image_tag(current_user.image_url_or_default),profile_user_path(current_user.id) %>
       </div>
     </div>
     <div class="media-content">
       <p class="is-title">
-        <strong><%= link_to current_user.email, profile_user_path(current_user.id) %></strong>
-        <%= f.text_area :body, class: "input js-new-comment comment-form", remote: true %> 
+        <%= f.text_area :body, class: "input js-new-comment", remote: true %> 
         <%= f.hidden_field :post_id, value: post.id %>
         <div class="field">
           <%= f.label :photo, class: "label" %>
           <div class="control"><%= f.file_field :photo, class: "input js-new-comment", remote: true %></div>
         </div>
-        <%= f.submit "Send", class: "comment-form js-new-comment button" %>
+        <%= f.submit "Send", class: "js-new-comment button" %>
       </p>
     </div>
   </div>

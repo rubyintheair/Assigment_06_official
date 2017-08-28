@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
   def index
-    @posts = Post.all.order("updated_at DESC").page(10)
+    @posts = Post.order("updated_at DESC").page(params[:page]).per(params[:per])
   end
 end

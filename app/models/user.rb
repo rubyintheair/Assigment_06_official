@@ -67,6 +67,10 @@ class User < ApplicationRecord
     User.offset(random_index).first
   end
 
+  def timeline_posts
+    Post.where("poster_id = ? or wall_user_id = ? ", id, id).order('created_at DESC').uniq
+  end 
+
   # EXPLANATION[]
   # def friends
   #   # go look at each of my friendship and get friend_id
