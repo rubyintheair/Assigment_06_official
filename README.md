@@ -16,6 +16,7 @@ A Facebook clone for the Bootcamp Ruby class.
 - [x] Home page (timeline) should display a list of posts by “my friends”
 - [x] Any user can comment on any post
 - [ ] I can receive an email if someone comments on my post
+- [x] User's profile have cover photo
 - [ ] BONUS: implement User's profile that is similar to Facebook: with cover photo, profile pic and work info.
 
 
