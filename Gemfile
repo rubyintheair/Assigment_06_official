@@ -22,9 +22,9 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', git: 'https://github.com/codahale/bcrypt-ruby.git', :require => 'bcrypt'
 gem 'carrierwave', '~> 1.0'
-
+gem 'nokogiri', '~> 1.8'
 # Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
+# gem x'capistrano-rails', group: :development
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
